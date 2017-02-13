@@ -17,4 +17,4 @@ In your `preferences.xml` add:
         android:title="Percent value"
         android:defaultValue="0.7"/>
 ```
-Use it as a drop-in replacement for `android.support.v7.preference.SeekBarPreference`
+Use it as a drop-in replacement for `SeekBarPreference`

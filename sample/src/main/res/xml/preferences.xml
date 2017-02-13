@@ -4,6 +4,7 @@
     <gs.preference.PercentSeekBarPreference
         android:key="someKey"
         android:title="Percent value"
-        android:defaultValue="0.7" />
+        android:defaultValue="0.7"
+        android:max="100" />
 
 </PreferenceScreen>

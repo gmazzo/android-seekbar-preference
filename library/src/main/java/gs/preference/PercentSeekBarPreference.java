@@ -2,14 +2,34 @@ package gs.preference;
 
 import android.content.Context;
 import android.content.res.TypedArray;
+import android.preference.SeekBarPreference;
 import android.support.annotation.FloatRange;
-import android.support.v7.preference.SeekBarPreference;
 import android.util.AttributeSet;
 
+import java.lang.reflect.Field;
+import java.lang.reflect.Method;
+
 /**
- * A {@link SeekBarPreference} that stores its value in a percentual relation (between 0 and 1) of {@link #getMax()} and {@link #getMin()}
+ * A {@link SeekBarPreference} that stores its value in a percentual relation (between 0 and 1) of {@link #getMax()}
  */
 public class PercentSeekBarPreference extends SeekBarPreference {
+    private static final Field FIELD_MAX;
+    private static final Field FIELD_VALUE;
+    private static final Method METHOD_SET_PROGRESS;
+
+    static {
+        try {
+            FIELD_MAX = SeekBarPreference.class.getDeclaredField("mMax");
+            FIELD_MAX.setAccessible(true);
+            FIELD_VALUE = SeekBarPreference.class.getDeclaredField("mProgress");
+            FIELD_VALUE.setAccessible(true);
+            METHOD_SET_PROGRESS = SeekBarPreference.class.getDeclaredMethod("setProgress", int.class, boolean.class);
+            METHOD_SET_PROGRESS.setAccessible(true);
+
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+    }
 
     public PercentSeekBarPreference(Context context, AttributeSet attrs, int defStyleAttr, int defStyleRes) {
         super(context, attrs, defStyleAttr, defStyleRes);
@@ -38,7 +58,9 @@ public class PercentSeekBarPreference extends SeekBarPreference {
     }
 
     @Override
+    @SuppressWarnings("ResourceType")
     protected Object onGetDefaultValue(TypedArray a, int index) {
+        setMax(a.getInt(2, 100));
         return adaptValue(a.getFloat(index, 0));
     }
 
@@ -48,21 +70,47 @@ public class PercentSeekBarPreference extends SeekBarPreference {
     }
 
     /**
-     * Returns a <code>float</code> value calculated as <code>({@link #getValue()} - {@link #getMin()}) / ({@link #getMax()} - {@link #getMin()})) </code>
+     * Returns a <code>float</code> value calculated as <code>{@link #getValue()} / {@link #getMax()}</code>
      *
      * @return a percentiual value (between 0 and 1)
      */
     @FloatRange(from = 0, to = 1)
     public float getPercentValue() {
         float max = getMax();
-        float min = getMin();
         float value = getValue();
 
-        return (value - min) / (max - min);
+        return value / max;
+    }
+
+    public int getMax() {
+        try {
+            return FIELD_MAX.getInt(this);
+
+        } catch (IllegalAccessException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    public int getValue() {
+        try {
+            return FIELD_VALUE.getInt(this);
+
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    public void setValue(int value) {
+        try {
+            METHOD_SET_PROGRESS.invoke(this, value, true);
+
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
     }
 
     /**
-     * Sets the percent value between {@link #getMax()} and {@link #getMin()}
+     * Sets the percent value between {@link #getMax()}
      *
      * @param value
      */

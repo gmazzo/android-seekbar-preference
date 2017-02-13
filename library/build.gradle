@@ -37,6 +37,7 @@ bintray {
 }
 
 dependencies {
+    provided fileTree(dir: 'systemLibs', include: '*.jar')
     compile 'com.android.support:preference-v7:25.1.1'
 }
 
