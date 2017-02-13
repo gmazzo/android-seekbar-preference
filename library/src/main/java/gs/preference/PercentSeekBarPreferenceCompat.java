@@ -3,26 +3,27 @@ package gs.preference;
 import android.content.Context;
 import android.content.res.TypedArray;
 import android.support.annotation.FloatRange;
+import android.support.v7.preference.SeekBarPreference;
 import android.util.AttributeSet;
 
 /**
- * A {@link SeekBarPreference} that stores its value in a percentual relation (between 0 and 1) of {@link #getMax()}
+ * A {@link SeekBarPreference} that stores its value in a percentual relation (between 0 and 1) of {@link #getMax()} and {@link #getMin()}
  */
-public class PercentSeekBarPreference extends SeekBarPreference {
+public class PercentSeekBarPreferenceCompat extends SeekBarPreference {
 
-    public PercentSeekBarPreference(Context context, AttributeSet attrs, int defStyleAttr, int defStyleRes) {
+    public PercentSeekBarPreferenceCompat(Context context, AttributeSet attrs, int defStyleAttr, int defStyleRes) {
         super(context, attrs, defStyleAttr, defStyleRes);
     }
 
-    public PercentSeekBarPreference(Context context, AttributeSet attrs, int defStyleAttr) {
+    public PercentSeekBarPreferenceCompat(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
     }
 
-    public PercentSeekBarPreference(Context context, AttributeSet attrs) {
+    public PercentSeekBarPreferenceCompat(Context context, AttributeSet attrs) {
         super(context, attrs);
     }
 
-    public PercentSeekBarPreference(Context context) {
+    public PercentSeekBarPreferenceCompat(Context context) {
         super(context);
     }
 

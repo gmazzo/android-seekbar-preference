@@ -1,5 +1,3 @@
-rootProject.name = 'root'
-
 include ':library', ':sample'
 
-project(':library').name = 'percent-seekbar-pref'
+project(':library').name = 'seekbar-preference'

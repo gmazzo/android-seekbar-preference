@@ -8,7 +8,7 @@
 
         <activity
             android:name=".SamplePreferenceActivity"
-            android:label="Sample SeekBarPreference">
+            android:label="SeekBarPreference">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
@@ -17,7 +17,7 @@
 
         <activity
             android:name=".SampleFragmentActivity"
-            android:label="Sample SeekBarPreference Compat">
+            android:label="SeekBarPreference Compat">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />

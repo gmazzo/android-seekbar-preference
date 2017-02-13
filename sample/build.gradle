@@ -15,5 +15,5 @@ android {
 }
 
 dependencies {
-    compile project(':percent-seekbar-pref')
+    compile project(':seekbar-preference')
 }

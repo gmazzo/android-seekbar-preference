@@ -5,4 +5,6 @@
         <item name="preferenceTheme">@style/PreferenceThemeOverlay</item>
     </style>
 
+    <string name="preference_switch_key" translatable="false">preference_key_switch</string>
+
 </resources>

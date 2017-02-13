@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <PreferenceCategory android:title="Native Sample">
+    <PreferenceCategory android:title="Compat Sample">
 
-        <gs.preference.PercentSeekBarPreference
+        <gs.preference.PercentSeekBarPreferenceCompat
             android:key="someKey"
             android:title="Percent value"
             android:defaultValue="0.7" />
@@ -13,6 +13,6 @@
     <Preference
         android:key="@string/preference_switch_key"
         android:persistent="false"
-        android:title="Show Compat Sample" />
+        android:title="Show Native Sample" />
 
 </PreferenceScreen>
