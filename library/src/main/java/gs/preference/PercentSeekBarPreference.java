@@ -1,4 +1,4 @@
-package gs.preference.floatseekbar;
+package gs.preference;
 
 import android.content.Context;
 import android.content.res.TypedArray;

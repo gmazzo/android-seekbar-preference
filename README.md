@@ -12,8 +12,9 @@ On your `build.gradle` add:
 ## Usage
 In your `preferences.xml` add:
 ```xml
-    <gs.preference.floatseekbar.PercentSeekBarPreference
+    <gs.preference.PercentSeekBarPreference
         android:key="someKey"
         android:title="Percent value"
         android:defaultValue="0.7"/>
 ```
+Use it as a drop-in replacement for `android.support.v7.preference.SeekBarPreference`
