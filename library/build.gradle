@@ -15,7 +15,7 @@ android {
 }
 
 def repoDesc = 'A SeekBarPreference that stores its value in a percentual relation (0 to 1) on max and min values'
-def repoName = 'percent-seekbar-pref'
+def repoName = 'android-seekbar-preference'
 def repoUrl = "https://github.com/gmazzo/$repoName"
 
 bintray {
