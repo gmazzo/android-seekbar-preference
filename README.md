@@ -1,15 +1,15 @@
-# percent-seekbar-pref
+# seekbar-preference
 A SeekBarPreference that stores its value in a percentual relation (0 to 1) on max and min values
 
 ## Import
 On your `build.gradle` add:
 ```
     dependencies {
-        compile 'com.github.gmazzo:percent-seekbar-pref:0.1'
+        compile 'com.github.gmazzo:seekbar-preference:0.1'
     }
 ```
 
-## Usage
+## Usage with native `android.preference.Preference`
 In your `preferences.xml` add:
 ```xml
     <gs.preference.PercentSeekBarPreference
@@ -17,4 +17,16 @@ In your `preferences.xml` add:
         android:title="Percent value"
         android:defaultValue="0.7"/>
 ```
-Use it as a drop-in replacement for `SeekBarPreference`
+
+## Usage with compat `android.support.v7.preference.Preference`
+In your `preferences.xml` add:
+```xml
+    <gs.preference.PercentSeekBarPreferenceCompat
+        android:key="someKey"
+        android:title="Percent value"
+        android:defaultValue="0.7"/>
+```
+
+## Screenshots
+![Native](screenshots/native.png)
+![Compat](screenshots/compat.png)
