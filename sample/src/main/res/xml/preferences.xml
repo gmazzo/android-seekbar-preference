@@ -1,12 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
-<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <PreferenceCategory android:title="Native Sample">
 
         <gs.preference.PercentSeekBarPreference
-            android:key="someKey"
+            android:key="key1"
             android:title="Percent value"
             android:defaultValue="0.7" />
+
+        <gs.preference.PercentSeekBarPreference
+            android:key="key2"
+            android:title="Non-Smooth Percent value"
+            android:defaultValue="0.4"
+            app:smooth="false" />
 
     </PreferenceCategory>
 

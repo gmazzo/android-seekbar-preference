@@ -27,7 +27,7 @@ public class SeekBarPreference extends Preference {
     private int mMin;
     private int mMax;
     private int mSeekBarIncrement;
-    private boolean mTrackingTouch;
+    private boolean mSmooth;
     private SeekBar mSeekBar;
     private TextView mSeekBarValueTextView;
     private boolean mAdjustable; // whether the seekbar should respond to the left/right keys
@@ -39,9 +39,11 @@ public class SeekBarPreference extends Preference {
      * Listener reacting to the SeekBar changing value by the user
      */
     private OnSeekBarChangeListener mSeekBarChangeListener = new OnSeekBarChangeListener() {
+        private boolean mTrackingTouch;
+
         @Override
         public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
-            if (fromUser && !mTrackingTouch) {
+            if (fromUser && (mSmooth || !mTrackingTouch)) {
                 syncValueInternal(seekBar);
             }
         }
@@ -121,6 +123,7 @@ public class SeekBarPreference extends Preference {
          * to perform the same steps by changing min/max to max/min as following:
          * mMax = a.getInt(...) and setMin(...).
          */
+        mSmooth = a.getBoolean(R.styleable.SeekBarPreference_smooth, true);
         mMin = a.getInt(R.styleable.SeekBarPreference_min, 0);
         setMax(a.getInt(R.styleable.SeekBarPreference_android_max, 100));
         setSeekBarIncrement(a.getInt(R.styleable.SeekBarPreference_seekBarIncrement, 0));
