@@ -7,7 +7,7 @@ android {
     buildToolsVersion "25.0.2"
 
     defaultConfig {
-        minSdkVersion 11
+        minSdkVersion 9
         targetSdkVersion 25
         versionCode 1
         versionName "$version"
@@ -15,7 +15,8 @@ android {
 }
 
 def repoDesc = 'A SeekBarPreference that stores its value in a percentual relation (0 to 1) on max and min values'
-def repoUrl = 'https://github.com/gmazzo/percent-seekbar-pref'
+def repoName = 'percent-seekbar-pref'
+def repoUrl = "https://github.com/gmazzo/$repoName"
 
 bintray {
     user = System.getenv('BINTRAY_USER')
@@ -24,7 +25,7 @@ bintray {
     configurations = ['archives']
     pkg {
         repo = 'maven'
-        name = 'percent-seekbar-pref'
+        name = repoName
         desc = repoDesc
         vcsUrl = "${repoUrl}.git"
         githubRepo = repoUrl.replaceFirst('\\Qhttps://github.com/\\E', '');
