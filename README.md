@@ -4,6 +4,10 @@ A SeekBarPreference that stores its value in a percentual relation (0 to 1) on m
 ## Import
 On your `build.gradle` add:
 ```
+    repositories {
+        maven { url 'https://dl.bintray.com/gmazzo/maven' }
+    }
+
     dependencies {
         compile 'com.github.gmazzo:seekbar-preference:0.1'
     }
